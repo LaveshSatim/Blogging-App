@@ -1,18 +1,28 @@
 package com.blog.dto;
 
 import java.util.Objects;
-import java.util.UUID;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class UserDto {
 
 	private String id;
 
+	@NotEmpty(message = "name shoud be not empty")
+	@Size(max = 20, min = 3, message = "name should be 3 to 20")
 	private String name;
 
+	@Email
+	@NotEmpty
 	private String email;
 
+	@NotEmpty
 	private String password;
 
+	@NotEmpty
 	private String about;
 
 	public String getId() {

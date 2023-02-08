@@ -23,12 +23,12 @@ public class UserServiceImpl implements UserService {
 		this.mapper = mapper;
 	}
 
-	@Override //done
+	@Override // done
 	public UserDto createUser(UserDto userDto) {
 		return mapper.map(userRepository.save(mapper.map(userDto, User.class)), UserDto.class);
 	}
 
-	@Override //done
+	@Override // done
 	public UserDto updateUser(UserDto userDto, String id) {
 		User user = userRepository.findById(id).orElseThrow(() -> new UserNotFound(id + " use not found"));
 		user.setAbout(userDto.getAbout());
@@ -39,14 +39,14 @@ public class UserServiceImpl implements UserService {
 		return mapper.map(userRepository.save(user), UserDto.class);
 	}
 
-	@Override
+	@Override // done
 	public UserDto getUserByID(String id) {
 
 		return mapper.map(userRepository.findById(id).orElseThrow(() -> new UserNotFound(id + " use not found")),
 				UserDto.class);
 	}
 
-	@Override //done
+	@Override // done
 	public List<UserDto> getAllUsers() {
 		List<UserDto> userDtos = new ArrayList<>();
 		userRepository.findAll().forEach(user -> userDtos.add(mapper.map(user, UserDto.class)));
