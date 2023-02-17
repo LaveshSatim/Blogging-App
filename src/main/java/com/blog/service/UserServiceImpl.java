@@ -2,6 +2,7 @@ package com.blog.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
@@ -48,9 +49,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override // done
 	public List<UserDto> getAllUsers() {
-		List<UserDto> userDtos = new ArrayList<>();
-		userRepository.findAll().forEach(user -> userDtos.add(mapper.map(user, UserDto.class)));
-		return userDtos;
+		return userRepository.findAll().stream().map(e -> mapper.map(e, UserDto.class)).collect(Collectors.toList());
 	}
 
 	@Override

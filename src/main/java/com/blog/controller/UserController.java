@@ -46,7 +46,7 @@ public class UserController {
 
 		System.out.println(id);
 
-		return new ResponseEntity(service.updateUser(userDto, id), HttpStatus.OK);
+		return new ResponseEntity<UserDto>(service.updateUser(userDto, id), HttpStatus.OK);
 	}
 
 	@GetMapping("/id/{id}")

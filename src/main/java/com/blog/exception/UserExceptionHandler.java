@@ -30,12 +30,12 @@ public class UserExceptionHandler {
 						LocalDateTime.now().toString()));
 	}
 
-	@ExceptionHandler(Exception.class)
-	public ResponseEntity<Payload> globalHandler(Exception exception) {
-		return ResponseEntity.badRequest()
-				.body(new Payload(exception.getClass().getName() + " " + exception.getMessage(), HttpStatus.BAD_REQUEST,
-						LocalDateTime.now().toString()));
-	}
+//	@ExceptionHandler(Exception.class)
+//	public ResponseEntity<Payload> globalHandler(Exception exception) {
+//		return ResponseEntity.badRequest()
+//				.body(new Payload(exception.getClass().getName() + " " + exception.getMessage(), HttpStatus.BAD_REQUEST,
+//						LocalDateTime.now().toString()));
+//	}
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<Map<String, String>> validExceptionHandler(MethodArgumentNotValidException exception) {
